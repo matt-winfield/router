@@ -19,6 +19,7 @@ import { SafeFragment } from './SafeFragment'
 import { renderRouteNotFound } from './renderRouteNotFound'
 import { ScrollRestoration } from './scroll-restoration'
 import type { AnyRoute, RootRouteOptions } from '@tanstack/router-core'
+import { isServer } from '@tanstack/router-core/is-server'
 
 export const Match = (props: { matchId: string }) => {
   const router = useRouter()
@@ -126,7 +127,7 @@ export const Match = (props: { matchId: string }) => {
               <Solid.Switch>
                 <Solid.Match when={resolvedNoSsr}>
                   <Solid.Show
-                    when={!router.isServer}
+                    when={!isServer}
                     fallback={<Dynamic component={PendingComponent()} />}
                   >
                     <MatchInner matchId={props.matchId} />
@@ -254,7 +255,7 @@ export const MatchInner = (props: { matchId: string }): any => {
 
           if (pendingMinMs && !router.getMatch(match().id)?.minPendingPromise) {
             // Create a promise that will resolve after the minPendingMs
-            if (!router.isServer) {
+            if (!isServer) {
               const minPendingPromise = createControlledPromise<void>()
 
               Promise.resolve().then(() => {
@@ -305,7 +306,7 @@ export const MatchInner = (props: { matchId: string }): any => {
       </Solid.Match>
       <Solid.Match when={match().status === 'error'}>
         {(_) => {
-          if (router.isServer) {
+          if (isServer) {
             const RouteErrorComponent =
               (route().options.errorComponent ??
                 router.options.defaultErrorComponent) ||

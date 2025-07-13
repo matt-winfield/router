@@ -1,4 +1,9 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["src", "vite.config.ts", "tests", "vite-minify-plugin.ts"]
+  "include": ["src", "vite.config.ts", "tests", "vite-minify-plugin.ts"],
+  "compilerOptions": {
+    "paths": {
+      "@tanstack/router-core/is-server": ["./src/is-server/server.ts"]
+    }
+  }
 }

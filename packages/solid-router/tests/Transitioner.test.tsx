@@ -8,6 +8,9 @@ import {
 } from '../src'
 import { RouterProvider } from '../src/RouterProvider'
 
+vi.mock('@tanstack/router-core/is-server', () => ({
+  isServer: true,
+}))
 describe('Transitioner', () => {
   it('should call router.load() when Transitioner mounts on the client', async () => {
     const rootRoute = createRootRoute()
@@ -39,6 +42,9 @@ describe('Transitioner', () => {
   })
 
   it('should not call router.load() when on the server', async () => {
+    vi.mock('@tanstack/router-core/is-server', () => ({
+      isServer: true,
+    }))
     const rootRoute = createRootRoute()
     const indexRoute = createRoute({
       getParentRoute: () => rootRoute,
@@ -52,7 +58,6 @@ describe('Transitioner', () => {
       history: createMemoryHistory({
         initialEntries: ['/'],
       }),
-      isServer: true,
     })
 
     // Mock router.load() to verify it gets called

@@ -24,6 +24,7 @@ import type {
   RouterState,
   ToSubOptionsProps,
 } from '@tanstack/router-core'
+import { isServer } from '@tanstack/router-core/is-server'
 
 declare module '@tanstack/router-core' {
   export interface RouteMatchExtensions {
@@ -44,7 +45,7 @@ export function Matches() {
 
   // Do not render a root Suspense during SSR or hydrating from SSR
   const ResolvedSuspense =
-    router.isServer || (typeof document !== 'undefined' && router.ssr)
+    isServer || (typeof document !== 'undefined' && router.ssr)
       ? SafeFragment
       : Solid.Suspense
 

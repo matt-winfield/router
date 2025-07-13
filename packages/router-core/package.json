@@ -68,6 +68,66 @@
         "default": "./dist/cjs/ssr/client.cjs"
       }
     },
+    "./is-server": {
+      "browser": {
+        "import": {
+          "types": "./dist/esm/is-server/client.d.ts",
+          "default": "./dist/esm/is-server/client.js"
+        },
+        "require": {
+          "types": "./dist/cjs/is-server/client.d.cts",
+          "default": "./dist/cjs/is-server/client.cjs"
+        }
+      },
+      "worker": {
+        "import": {
+          "types": "./dist/esm/is-server/server.d.ts",
+          "default": "./dist/esm/is-server/server.js"
+        },
+        "require": {
+          "types": "./dist/cjs/is-server/server.d.cts",
+          "default": "./dist/cjs/is-server/server.cjs"
+        }
+      },
+      "deno": {
+        "import": {
+          "types": "./dist/esm/is-server/server.d.ts",
+          "default": "./dist/esm/is-server/server.js"
+        },
+        "require": {
+          "types": "./dist/cjs/is-server/server.d.cts",
+          "default": "./dist/cjs/is-server/server.cjs"
+        }
+      },
+      "node": {
+        "import": {
+          "types": "./dist/esm/is-server/server.d.ts",
+          "default": "./dist/esm/is-server/server.js"
+        },
+        "require": {
+          "types": "./dist/cjs/is-server/server.d.cts",
+          "default": "./dist/cjs/is-server/server.cjs"
+        }
+      },
+      "bun": {
+        "import": {
+          "types": "./dist/esm/is-server/server.d.ts",
+          "default": "./dist/esm/is-server/server.js"
+        },
+        "require": {
+          "types": "./dist/cjs/is-server/server.d.cts",
+          "default": "./dist/cjs/is-server/server.cjs"
+        }
+      },
+      "import": {
+        "types": "./dist/esm/is-server/server.d.ts",
+        "default": "./dist/esm/is-server/server.js"
+      },
+      "require": {
+        "types": "./dist/cjs/is-server/server.d.cts",
+        "default": "./dist/cjs/is-server/server.cjs"
+      }
+    },
     "./package.json": "./package.json"
   },
   "sideEffects": false,

@@ -260,6 +260,10 @@ describe('redirect', () => {
 
   describe('SSR', () => {
     test('when `redirect` is thrown in `beforeLoad`', async () => {
+      vi.mock('@tanstack/router-core/is-server', () => ({
+        isServer: true,
+      }))
+
       const rootRoute = createRootRoute()
 
       const indexRoute = createRoute({
@@ -282,8 +286,6 @@ describe('redirect', () => {
 
       const router = createRouter({
         routeTree: rootRoute.addChildren([indexRoute, aboutRoute]),
-        // Mock server mode
-        isServer: true,
         history: createMemoryHistory({
           initialEntries: ['/'],
         }),
@@ -311,6 +313,9 @@ describe('redirect', () => {
   })
 
   test('when `redirect` is thrown in `loader`', async () => {
+    vi.mock('@tanstack/router-core/is-server', () => ({
+      isServer: true,
+    }))
     const rootRoute = createRootRoute()
 
     const indexRoute = createRoute({
@@ -336,8 +341,6 @@ describe('redirect', () => {
         initialEntries: ['/'],
       }),
       routeTree: rootRoute.addChildren([indexRoute, aboutRoute]),
-      // Mock server mode
-      isServer: true,
     })
 
     await router.load()

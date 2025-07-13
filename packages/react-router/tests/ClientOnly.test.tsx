@@ -17,6 +17,9 @@ afterEach(() => {
 })
 
 function createTestRouter(opts: { isServer: boolean }) {
+  vi.mock('@tanstack/router-core/is-server', () => ({
+    isServer,
+  }))
   const history = createMemoryHistory({ initialEntries: ['/'] })
 
   const rootRoute = createRootRoute({})

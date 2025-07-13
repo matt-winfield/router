@@ -7,6 +7,7 @@ import {
 import { useLayoutEffect, usePrevious } from './utils'
 import { useRouter } from './useRouter'
 import { useRouterState } from './useRouterState'
+import { isServer } from '@tanstack/router-core/is-server'
 
 export function Transitioner() {
   const router = useRouter()
@@ -30,7 +31,7 @@ export function Transitioner() {
   const isPagePending = isLoading || hasPendingMatches
   const previousIsPagePending = usePrevious(isPagePending)
 
-  if (!router.isServer) {
+  if (!isServer) {
     router.startTransition = (fn: () => void) => {
       setIsTransitioning(true)
       React.startTransition(() => {
