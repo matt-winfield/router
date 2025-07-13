@@ -10,6 +10,7 @@ import {
   rootRouteId,
 } from '@tanstack/router-core'
 import { Dynamic } from 'solid-js/web'
+import { isServer } from '@tanstack/router-core/is-server'
 import { CatchBoundary, ErrorComponent } from './CatchBoundary'
 import { useRouterState } from './useRouterState'
 import { useRouter } from './useRouter'
@@ -19,7 +20,6 @@ import { SafeFragment } from './SafeFragment'
 import { renderRouteNotFound } from './renderRouteNotFound'
 import { ScrollRestoration } from './scroll-restoration'
 import type { AnyRoute, RootRouteOptions } from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/is-server'
 
 export const Match = (props: { matchId: string }) => {
   const router = useRouter()

@@ -3,9 +3,9 @@ import {
   restoreScroll,
   storageKey,
 } from '@tanstack/router-core'
+import { isServer } from '@tanstack/router-core/is-server'
 import { useRouter } from './useRouter'
 import { ScriptOnce } from './ScriptOnce'
-import { isServer } from '@tanstack/router-core/is-server'
 
 export function ScrollRestoration() {
   const router = useRouter()

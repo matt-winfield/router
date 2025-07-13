@@ -5,6 +5,7 @@ import {
   parseHref,
 } from '@tanstack/history'
 import invariant from 'tiny-invariant'
+import { isServer } from '@tanstack/router-core/is-server'
 import {
   createControlledPromise,
   deepEqual,
@@ -80,7 +81,6 @@ import type { Manifest } from './manifest'
 import type { AnySchema, AnyValidator } from './validators'
 import type { NavigateOptions, ResolveRelativePath, ToOptions } from './link'
 import type { NotFoundError } from './not-found'
-import { isServer } from '@tanstack/router-core/is-server'
 
 declare global {
   interface Window {

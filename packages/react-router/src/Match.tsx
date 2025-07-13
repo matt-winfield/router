@@ -9,6 +9,7 @@ import {
   pick,
   rootRouteId,
 } from '@tanstack/router-core'
+import { isServer } from '@tanstack/router-core/is-server'
 import { CatchBoundary, ErrorComponent } from './CatchBoundary'
 import { useRouterState } from './useRouterState'
 import { useRouter } from './useRouter'
@@ -23,7 +24,6 @@ import type {
   ParsedLocation,
   RootRouteOptions,
 } from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/is-server'
 
 export const Match = React.memo(function MatchImpl({
   matchId,

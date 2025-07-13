@@ -4,10 +4,10 @@ import {
   handleHashScroll,
   trimPathRight,
 } from '@tanstack/router-core'
+import { isServer } from '@tanstack/router-core/is-server'
 import { useLayoutEffect, usePrevious } from './utils'
 import { useRouter } from './useRouter'
 import { useRouterState } from './useRouterState'
-import { isServer } from '@tanstack/router-core/is-server'
 
 export function Transitioner() {
   const router = useRouter()
