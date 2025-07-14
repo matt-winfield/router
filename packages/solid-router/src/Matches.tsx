@@ -1,6 +1,6 @@
 import * as Solid from 'solid-js'
 import warning from 'tiny-warning'
-import { isServer } from '@tanstack/router-core/is-server'
+import { isServer } from '@tanstack/router-is-server'
 import { CatchBoundary, ErrorComponent } from './CatchBoundary'
 import { useRouterState } from './useRouterState'
 import { useRouter } from './useRouter'

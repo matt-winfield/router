@@ -8,7 +8,7 @@ import {
 } from '../src'
 import { RouterProvider } from '../src/RouterProvider'
 
-vi.mock('@tanstack/router-core/is-server', () => ({
+vi.mock('@tanstack/router-is-server', () => ({
   isServer: true,
 }))
 describe('Transitioner', () => {
@@ -42,7 +42,7 @@ describe('Transitioner', () => {
   })
 
   it('should not call router.load() when on the server', async () => {
-    vi.mock('@tanstack/router-core/is-server', () => ({
+    vi.mock('@tanstack/router-is-server', () => ({
       isServer: true,
     }))
     const rootRoute = createRootRoute()

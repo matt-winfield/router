@@ -19,7 +19,7 @@ afterEach(() => {
 
 describe('ssr scripts', () => {
   test('it works', async () => {
-    vi.mock('@tanstack/router-core/is-server', () => ({
+    vi.mock('@tanstack/router-is-server', () => ({
       isServer: true,
     }))
 
@@ -78,7 +78,7 @@ describe('ssr scripts', () => {
   })
 
   test('excludes `undefined` script values', async () => {
-    vi.mock('@tanstack/router-core/is-server', () => ({
+    vi.mock('@tanstack/router-is-server', () => ({
       isServer: true,
     }))
 
@@ -136,7 +136,7 @@ describe('ssr scripts', () => {
 
 describe('ssr HeadContent', () => {
   test('derives title, dedupes meta, and allows non-loader HeadContent', async () => {
-    vi.mock('@tanstack/router-core/is-server', () => ({
+    vi.mock('@tanstack/router-is-server', () => ({
       isServer: true,
     }))
 

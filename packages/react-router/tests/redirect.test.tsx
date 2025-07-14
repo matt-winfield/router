@@ -267,7 +267,7 @@ describe('redirect', () => {
 
   describe('SSR', () => {
     test('when `redirect` is thrown in `beforeLoad`', async () => {
-      vi.mock('@tanstack/router-core/is-server', () => ({
+      vi.mock('@tanstack/router-is-server', () => ({
         isServer: true,
       }))
 
@@ -319,7 +319,7 @@ describe('redirect', () => {
     })
 
     test('when `redirect` is thrown in `loader`', async () => {
-      vi.mock('@tanstack/router-core/is-server', () => ({
+      vi.mock('@tanstack/router-is-server', () => ({
         isServer: true,
       }))
 

@@ -3,7 +3,7 @@ import {
   restoreScroll,
   storageKey,
 } from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/is-server'
+import { isServer } from '@tanstack/router-is-server'
 import { useRouter } from './useRouter'
 import { ScriptOnce } from './ScriptOnce'
 

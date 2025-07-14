@@ -5,7 +5,7 @@ import {
   parseHref,
 } from '@tanstack/history'
 import invariant from 'tiny-invariant'
-import { isServer } from '@tanstack/router-core/is-server'
+import { isServer } from '@tanstack/router-is-server'
 import {
   createControlledPromise,
   deepEqual,
@@ -868,6 +868,7 @@ export class RouterCore<
       }
     }
 
+    console.log('isServer', isServer)
     if (
       !this.history ||
       (this.options.history && this.options.history !== this.history)

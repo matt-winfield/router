@@ -9,7 +9,7 @@ import {
   pick,
   rootRouteId,
 } from '@tanstack/router-core'
-import { isServer } from '@tanstack/router-core/is-server'
+import { isServer } from '@tanstack/router-is-server'
 import { CatchBoundary, ErrorComponent } from './CatchBoundary'
 import { useRouterState } from './useRouterState'
 import { useRouter } from './useRouter'
