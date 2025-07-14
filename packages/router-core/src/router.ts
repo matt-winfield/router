@@ -868,7 +868,6 @@ export class RouterCore<
       }
     }
 
-    console.log('isServer', isServer)
     if (
       !this.history ||
       (this.options.history && this.options.history !== this.history)
