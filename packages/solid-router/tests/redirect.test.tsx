@@ -35,8 +35,15 @@ afterEach(() => {
 
 const WAIT_TIME = 100
 
+vi.mock('@tanstack/router-is-server', () => ({
+  isServer: false,
+}))
+
 describe('redirect', () => {
   describe('SPA', () => {
+    beforeEach(() => {
+      vi.doUnmock('@tanstack/router-is-server')
+    })
     test('when `redirect` is thrown in `beforeLoad`', async () => {
       const nestedLoaderMock = vi.fn()
       const nestedFooLoaderMock = vi.fn()
@@ -260,10 +267,6 @@ describe('redirect', () => {
 
   describe('SSR', () => {
     test('when `redirect` is thrown in `beforeLoad`', async () => {
-      vi.mock('@tanstack/router-is-server', () => ({
-        isServer: true,
-      }))
-
       const rootRoute = createRootRoute()
 
       const indexRoute = createRoute({
@@ -313,9 +316,6 @@ describe('redirect', () => {
   })
 
   test('when `redirect` is thrown in `loader`', async () => {
-    vi.mock('@tanstack/router-is-server', () => ({
-      isServer: true,
-    }))
     const rootRoute = createRootRoute()
 
     const indexRoute = createRoute({

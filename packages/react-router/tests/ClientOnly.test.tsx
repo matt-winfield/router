@@ -16,10 +16,11 @@ afterEach(() => {
   cleanup()
 })
 
-function createTestRouter(opts: { isServer: boolean }) {
-  vi.mock('@tanstack/router-is-server', () => ({
-    isServer: opts.isServer,
-  }))
+vi.mock('@tanstack/router-is-server', () => ({
+  isServer: true,
+}))
+
+function createTestRouter() {
   const history = createMemoryHistory({ initialEntries: ['/'] })
 
   const rootRoute = createRootRoute({})
@@ -47,7 +48,7 @@ function createTestRouter(opts: { isServer: boolean }) {
   })
 
   const routeTree = rootRoute.addChildren([indexRoute, otherRoute])
-  const router = createRouter({ routeTree, history, ...opts })
+  const router = createRouter({ routeTree, history })
 
   return {
     router,
@@ -57,7 +58,7 @@ function createTestRouter(opts: { isServer: boolean }) {
 
 describe('ClientOnly', () => {
   it('should render fallback during SSR', async () => {
-    const { router } = createTestRouter({ isServer: true })
+    const { router } = createTestRouter()
     await router.load()
 
     // Initial render (SSR)
@@ -69,7 +70,9 @@ describe('ClientOnly', () => {
   })
 
   it('should render client content after hydration', async () => {
-    const { router } = createTestRouter({ isServer: false })
+    vi.doUnmock('@tanstack/router-is-server')
+
+    const { router } = createTestRouter()
     await router.load()
 
     // Mock useSyncExternalStore to simulate hydration
@@ -82,7 +85,8 @@ describe('ClientOnly', () => {
   })
 
   it('should handle navigation with client-only content', async () => {
-    const { router } = createTestRouter({ isServer: false })
+    vi.doUnmock('@tanstack/router-is-server')
+    const { router } = createTestRouter()
     await router.load()
 
     // Simulate hydration
