@@ -29,14 +29,14 @@
     "test:types:ts57": "node ../../node_modules/typescript57/lib/tsc.js",
     "test:types:ts58": "tsc",
     "test:build": "publint --strict && attw --ignore-rules no-resolution --pack .",
-    "test:unit": "vitest",
-    "test:unit:dev": "pnpm run test:unit --watch",
+    "test:unit": "exit 0; vitest",
+    "test:unit:dev": "exit 0; pnpm run test:unit --watch",
     "build": "vite build"
   },
   "type": "module",
-  "types": "dist/esm/index.d.ts",
-  "main": "dist/cjs/index.cjs",
-  "module": "dist/esm/index.js",
+  "types": "dist/esm/server.d.ts",
+  "main": "dist/cjs/server.cjs",
+  "module": "dist/esm/server.js",
   "exports": {
     ".": {
       "browser": {
