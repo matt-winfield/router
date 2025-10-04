@@ -1,11 +1,10 @@
 import { Link, Outlet, createFileRoute } from '@tanstack/react-router'
-import axios from 'redaxios'
 import { createServerFn } from '@tanstack/react-start'
+import axios from 'redaxios'
 import type { User } from '../utils/users'
-import { staticFunctionMiddleware } from '@tanstack/start-static-server-functions'
 
 const fetchUsers = createServerFn({ method: 'GET' })
-  .middleware([staticFunctionMiddleware])
+  // .middleware([staticFunctionMiddleware])
   .handler(async () => {
     console.info('Fetching users...')
     const res = await axios.get<Array<User>>(

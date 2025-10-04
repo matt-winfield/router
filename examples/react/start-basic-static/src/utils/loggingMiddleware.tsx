@@ -30,13 +30,14 @@ export const logMiddleware = createMiddleware({ type: 'function' })
   .client(async (options) => {
     const result = await options.next()
 
-    const now = new Date()
+    // TODO: result.context.serverTime is undefined
+    // const now = new Date()
 
-    console.log('Client Req/Res:', {
-      duration: result.context.clientTime.getTime() - now.getTime(),
-      durationToServer: result.context.durationToServer,
-      durationFromServer: now.getTime() - result.context.serverTime.getTime(),
-    })
+    // console.log('Client Req/Res:', {
+    //   duration: result.context.clientTime.getTime() - now.getTime(),
+    //   durationToServer: result.context.durationToServer,
+    //   durationFromServer: now.getTime() - result.context.serverTime.getTime(),
+    // })
 
     return result
   })

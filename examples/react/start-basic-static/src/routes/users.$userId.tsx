@@ -1,13 +1,12 @@
-import { ErrorComponent, createFileRoute } from '@tanstack/react-router'
-import axios from 'redaxios'
-import { createServerFn } from '@tanstack/react-start'
 import type { ErrorComponentProps } from '@tanstack/react-router'
-import type { User } from '~/utils/users'
+import { ErrorComponent, createFileRoute } from '@tanstack/react-router'
+import { createServerFn } from '@tanstack/react-start'
+import axios from 'redaxios'
 import { NotFound } from '~/components/NotFound'
-import { staticFunctionMiddleware } from '@tanstack/start-static-server-functions'
+import type { User } from '~/utils/users'
 
 const fetchUser = createServerFn({ method: 'GET' })
-  .middleware([staticFunctionMiddleware])
+  // .middleware([staticFunctionMiddleware])
   .inputValidator((d: string) => d)
   .handler(async ({ data: userId }) => {
     return axios

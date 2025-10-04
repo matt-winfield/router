@@ -1,31 +1,31 @@
 import { joinPaths } from '@tanstack/router-core'
-import { VIRTUAL_MODULES } from '@tanstack/start-server-core'
 import { TanStackServerFnPluginEnv } from '@tanstack/server-functions-plugin'
-import * as vite from 'vite'
-import { crawlFrameworkPkgs } from 'vitefu'
+import { VIRTUAL_MODULES } from '@tanstack/start-server-core'
 import { join } from 'pathe'
 import { escapePath } from 'tinyglobby'
-import { startManifestPlugin } from './start-manifest-plugin/plugin'
-import { startCompilerPlugin } from './start-compiler-plugin/plugin'
+import type { PluginOption } from 'vite'
+import * as vite from 'vite'
+import { crawlFrameworkPkgs } from 'vitefu'
+import type { ViteEnvironmentNames } from './constants'
 import { ENTRY_POINTS, VITE_ENVIRONMENT_NAMES } from './constants'
-import { tanStackStartRouter } from './start-router-plugin/plugin'
-import { loadEnvPlugin } from './load-env-plugin/plugin'
+import { createServerFnPlugin } from './create-server-fn-plugin/plugin'
 import { devServerPlugin } from './dev-server-plugin/plugin'
-import { parseStartConfig } from './schema'
-import { resolveEntry } from './resolve-entries'
+import { loadEnvPlugin } from './load-env-plugin/plugin'
 import {
   getClientOutputDirectory,
   getServerOutputDirectory,
 } from './output-directory'
 import { postServerBuild } from './post-server-build'
-import { createServerFnPlugin } from './create-server-fn-plugin/plugin'
-import type { ViteEnvironmentNames } from './constants'
+import { resolveEntry } from './resolve-entries'
 import type {
   TanStackStartInputConfig,
   TanStackStartOutputConfig,
 } from './schema'
-import type { PluginOption } from 'vite'
+import { parseStartConfig } from './schema'
 import type { CompileStartFrameworkOptions } from './start-compiler-plugin/compilers'
+import { startCompilerPlugin } from './start-compiler-plugin/plugin'
+import { startManifestPlugin } from './start-manifest-plugin/plugin'
+import { tanStackStartRouter } from './start-router-plugin/plugin'
 
 export interface TanStackStartVitePluginCoreOptions {
   framework: CompileStartFrameworkOptions
@@ -291,6 +291,7 @@ export function TanStackStartVitePluginCore(
             // This is not the same as injecting environment variables.
 
             ...defineReplaceEnv('TSS_SERVER_FN_BASE', TSS_SERVER_FN_BASE),
+            ...defineReplaceEnv('TSS_SERVER_FN_HOSTNAME', startConfig.serverFns.hostname ?? ''),
             ...defineReplaceEnv('TSS_CLIENT_OUTPUT_DIR', getClientOutputDirectory(viteConfig)),
             ...defineReplaceEnv('TSS_ROUTER_BASEPATH', startConfig.router.basepath),
             ...(command === 'serve' ? defineReplaceEnv('TSS_SHELL', startConfig.spa?.enabled ? 'true' : 'false') : {}),

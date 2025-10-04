@@ -15,7 +15,11 @@ export default defineConfig({
         enabled: true,
         prerender: {
           crawlLinks: true,
+          outputPath: 'index.html',
         },
+      },
+      serverFns: {
+        hostname: 'http://localhost:3000', // Replace with your production domain
       },
       sitemap: {
         host: 'https://localhost:3000',

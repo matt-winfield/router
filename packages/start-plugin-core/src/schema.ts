@@ -1,6 +1,6 @@
+import { configSchema, getConfig } from '@tanstack/router-plugin'
 import path from 'node:path'
 import { z } from 'zod'
-import { configSchema, getConfig } from '@tanstack/router-plugin'
 import type { TanStackStartVitePluginCoreOptions } from './plugin'
 
 const tsrConfig = configSchema
@@ -158,6 +158,7 @@ const tanstackStartOptionsSchema = z
       .default({}),
     serverFns: z
       .object({
+        hostname: z.string().optional(),
         base: z.string().optional().default('/_serverFn'),
       })
       .optional()
