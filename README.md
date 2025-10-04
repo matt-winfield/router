@@ -9,6 +9,11 @@ src="./media/header_router.png"
 alt="TanStack Router"
 />
 
+## SPA custom remote server function URL TODO
+
+- [x] Send requests to custom hostname for server functions
+- [ ] useLoaderData is returning undefined - why?
+
 ## TanStack Router
 
 A modern router designed for type safety, data‑driven navigation, and seamless developer experience.
